@@ -184,7 +184,7 @@ class Flowdock extends Adapter
   fetchFlowsAndConnect: ->
     @bot.flows (err, flows, res) =>
       return if err?
-      @bot.userId = res.headers['flowdock-user']
+      @bot.userId = res.headers.get('flowdock-user')
       @flows = flows
       @robot.logger.info("Found #{@flows.length} flows, and I have joined #{@joinedFlows().length} of them.")
       for flow in flows
